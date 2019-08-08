@@ -1,0 +1,1 @@
+winpty docker run -it -e LUIS_AUTHORING_KEY='my-authoring-key' -e LUIS_REGION='westus' --mount src="/c/Users/diberry/repos/cognitive-services-quickstart-code/python/LUIS/",dst=/usr/src/app,type=bind --rm my-py3-image
