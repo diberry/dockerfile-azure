@@ -1,0 +1,1 @@
+winpty docker run -it -e QNAMAKER_KEY='replace-with-your-key' -e QNAMAKER_HOST='https://westus.api.cognitive.microsoft.com/' --mount src="/c/Users/diberry/repos/dockerfile-azure/CognitiveServices/QnAMaker/Windows/Python",dst=/usr/src/app,type=bind --rm my-py3-qnamaker-image 
