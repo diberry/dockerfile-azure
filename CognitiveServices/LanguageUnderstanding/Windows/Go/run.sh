@@ -1,0 +1,1 @@
+winpty docker run -it -e LUIS_KEY='your-key-here' -e LUIS_HOST='https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/' --mount src="/c/Users/diberry/repos/dockerfile-azure/CognitiveServices/LanguageUnderstanding/Windows/Go/",dst=/go/src/app,type=bind --rm golang-sample
