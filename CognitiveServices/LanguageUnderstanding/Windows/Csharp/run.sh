@@ -1,0 +1,1 @@
+winpty docker run -it -e LUIS_PREDICTION_KEY='your-key' --mount src="/c/Users/diberry/repos/dockerfile-azure/CognitiveServices/LanguageUnderstanding/Windows/Csharp/",dst=/usr/src/app,type=bind --rm dotnetcore
