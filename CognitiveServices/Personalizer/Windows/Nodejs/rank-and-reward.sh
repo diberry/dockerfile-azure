@@ -1,0 +1,1 @@
+winpty docker run -it -e PERSONALIZER_KEY='' -e PERSONALIZER_ENDPOINT='https://diberry-personalizer-postbuild.cognitiveservices.azure.com/' --mount src="/c/Users/diberry/repos/dockerfile-azure/CognitiveServices/Personalizer/Windows/Nodejs",dst=/usr/src/app,type=bind --rm my-nodejs-image bash
