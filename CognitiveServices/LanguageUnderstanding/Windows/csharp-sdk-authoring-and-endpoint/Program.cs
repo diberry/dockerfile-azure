@@ -93,14 +93,40 @@ namespace LUIS_Prediction_CS
         // Send a query to a LUIS application.
         async static Task Query_App(LUISRuntimeClient client, ApplicationInfo app, string query)
         {
+            DateTime offsetNow = DateTime.UtcNow;
+
+            PredictionRequestOptions options = new PredictionRequestOptions
+            {
+                OverridePredictions = true,
+                DatetimeReference = offsetNow
+            };
+
             PredictionRequest obj = new PredictionRequest
             {
-                Query = query
+                Query = query,
+                Options = options,
+                DynamicLists = null,
+                ExternalEntities = null
             };
+
+            Boolean verbose = true;
+            Boolean showAllIntents = true;
+            Boolean logUtterance = true;
+
             try
             {
-                var info = await client.Prediction.GetSlotPredictionAsync(app.ID, "production", obj);
-                Console.WriteLine(info.ToString());
+                var info = await client.Prediction.GetSlotPredictionAsync(app.ID, "production", obj, verbose, showAllIntents, logUtterance);
+                Console.WriteLine("Top intent: " + info.Prediction.TopIntent);
+                Console.WriteLine("Score: " + info.Prediction.Intents[info.Prediction.TopIntent]);
+
+                foreach (var item in info.Prediction.Intents.Values)
+                {
+                    // For Dispatch Parent apps
+                    //Console.WriteLine(item.ChildApp.TopIntent);
+
+                    Console.WriteLine(item.Score);
+
+                }
             }
             catch (ErrorException e)
             {

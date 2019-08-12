@@ -1,10 +1,10 @@
 # docker build --no-cache -t dotnetcore .
 #
 FROM microsoft/dotnet:latest
-WORKDIR /usr/src/app
-COPY . /usr/src/app
+WORKDIR /app
+COPY . .
 
-RUN ls
+RUN ls -lR
 
 # build
 RUN dotnet build
